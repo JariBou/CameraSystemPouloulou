@@ -44,5 +44,24 @@ namespace CameraSystem._project.Scripts
             Gizmos.DrawFrustum(Vector3.zero, fov, 0.5f, 0f, Camera.main.aspect);
             Gizmos.matrix = Matrix4x4.identity;
         }
+
+        public void UpdateRotation(Quaternion transformRotation)
+        {
+            yaw = transformRotation.eulerAngles.y;
+            pitch = transformRotation.eulerAngles.x;
+            roll = transformRotation.eulerAngles.z;
+        }
+
+        // /// <summary>
+        // /// This method is <see href="https://media.tenor.com/CEO9iZ_AmygAAAAe/jeff-the-land-shark-absolute-cinema.png">this</see>
+        // /// </summary>
+        // /// <param name="cameraConfiguration"> The <see cref="CameraConfiguration"/> to lerp towards </param>
+        // /// <param name="t"> The t of the lerp </param>
+        // public void LerpTo(CameraConfiguration cameraConfiguration, float t)
+        // {
+        //     UpdateRotation(Quaternion.Lerp(GetRotation(), cameraConfiguration.GetRotation(), t));
+        //     pivot = Vector3.Lerp(pivot, cameraConfiguration.pivot, t);
+        //     fov =  Mathf.Lerp(fov, cameraConfiguration.fov, t);
+        // }
     }
 }
