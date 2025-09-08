@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CameraSystem._project.Scripts.Extensions;
 using CameraSystem._project.Scripts.Views;
@@ -36,6 +37,17 @@ namespace CameraSystem._project.Scripts
             Instance = this;
         }
 
+        private void Start()
+        {
+            _currentCameraConfiguration = new CameraConfiguration(0,
+                0,
+                0,
+                camera.transform.position,
+                0,
+                camera.fieldOfView);
+            _currentCameraConfiguration.UpdateRotation(camera.transform.rotation);
+        }
+
         private void Update()
         {
             _targetCameraConfiguration = ComputeAverage();
@@ -44,12 +56,13 @@ namespace CameraSystem._project.Scripts
         
         void ApplyConfiguration()
         {
-            _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
-
+            _currentCameraConfiguration = CameraConfiguration.Lerp(_currentCameraConfiguration, _targetCameraConfiguration, Time.deltaTime * _speed);
+            // _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
+            
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();
             camera.fieldOfView = _currentCameraConfiguration.fov;
-            
+
             // camera.transform.position = Vector3.Lerp(_currentCameraConfiguration.GetPosition(), _targetCameraConfiguration.GetPosition(), Time.deltaTime * _speed);
             // camera.transform.rotation = Quaternion.Lerp(_currentCameraConfiguration.GetRotation(), _targetCameraConfiguration.GetRotation(), Time.deltaTime * _speed);
             // camera.fieldOfView = Mathf.Lerp(_currentCameraConfiguration.fov, _targetCameraConfiguration.fov,  Time.deltaTime * _speed);

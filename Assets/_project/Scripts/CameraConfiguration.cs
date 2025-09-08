@@ -52,16 +52,20 @@ namespace CameraSystem._project.Scripts
             roll = transformRotation.eulerAngles.z;
         }
 
-        // /// <summary>
-        // /// This method is <see href="https://media.tenor.com/CEO9iZ_AmygAAAAe/jeff-the-land-shark-absolute-cinema.png">this</see>
-        // /// </summary>
-        // /// <param name="cameraConfiguration"> The <see cref="CameraConfiguration"/> to lerp towards </param>
-        // /// <param name="t"> The t of the lerp </param>
-        // public void LerpTo(CameraConfiguration cameraConfiguration, float t)
-        // {
-        //     UpdateRotation(Quaternion.Lerp(GetRotation(), cameraConfiguration.GetRotation(), t));
-        //     pivot = Vector3.Lerp(pivot, cameraConfiguration.pivot, t);
-        //     fov =  Mathf.Lerp(fov, cameraConfiguration.fov, t);
-        // }
+        /// <summary>
+        /// This method is <see href="https://media.tenor.com/CEO9iZ_AmygAAAAe/jeff-the-land-shark-absolute-cinema.png">this</see>
+        /// </summary>
+        /// <param name="a"> a </param>
+        /// <param name="b"> b </param>
+        /// <param name="t"> The t of the lerp </param>
+        public static CameraConfiguration Lerp(CameraConfiguration a, CameraConfiguration b, float t)
+        {
+            CameraConfiguration config = new();
+            config.UpdateRotation(Quaternion.Lerp(a.GetRotation(), b.GetRotation(), t));
+            config.pivot = Vector3.Lerp(a.pivot, b.pivot, t);
+            config.fov = Mathf.Lerp(a.fov, b.fov, t);
+            config.distance = Mathf.Lerp(a.distance, b.distance, t);
+            return config;
+        }
     }
 }
