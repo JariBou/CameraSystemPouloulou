@@ -30,7 +30,7 @@ namespace _project.Scripts
 
         public Vector3 GetPosition()
         {
-            return Pivot + GetRotation().eulerAngles * Distance; ;
+            return Pivot + GetRotation() * (Vector3.back * Distance);
         }
 
         public void DrawGizmos(Color color)
