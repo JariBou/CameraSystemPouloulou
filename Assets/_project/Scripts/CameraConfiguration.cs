@@ -23,14 +23,25 @@ namespace _project.Scripts
             Fov = fov;
         }
 
-        Quaternion GetRotation()
+        public Quaternion GetRotation()
         {
             return Quaternion.Euler(Pitch, Yaw, Roll);
         }
 
-        Vector3 GetPosition()
+        public Vector3 GetPosition()
         {
             return Pivot + GetRotation().eulerAngles * Distance; ;
+        }
+
+        public void DrawGizmos(Color color)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawSphere(Pivot, 0.25f);
+            Vector3 position = GetPosition();
+            Gizmos.DrawLine(Pivot, position);
+            Gizmos.matrix = Matrix4x4.TRS(position, GetRotation(), Vector3.one);
+            Gizmos.DrawFrustum(Vector3.zero, Fov, 0.5f, 0f, Camera.main.aspect);
+            Gizmos.matrix = Matrix4x4.identity;
         }
     }
 }
