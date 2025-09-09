@@ -29,7 +29,7 @@ namespace CameraSystem._project.Scripts
         [SerializeField]
         private List<ViewBase> _activeViews = new();
 
-        [SerializeField, Range(0.01f, 1f)]
+        [SerializeField, Range(0.01f, 10f)]
         private float _speed = 0.1f;
 
         public void Awake()
@@ -56,8 +56,8 @@ namespace CameraSystem._project.Scripts
         
         void ApplyConfiguration()
         {
-            _currentCameraConfiguration = CameraConfiguration.Lerp(_currentCameraConfiguration, _targetCameraConfiguration, Time.deltaTime * _speed);
-            // _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
+            // _currentCameraConfiguration = CameraConfiguration.Lerp(_currentCameraConfiguration, _targetCameraConfiguration, Time.deltaTime * _speed);
+            _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
             
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();

@@ -10,7 +10,7 @@ namespace CameraSystem._project.Scripts.Extensions
         /// <param name="self"> This </param>
         /// <param name="cameraConfiguration"> The <see cref="CameraConfiguration"/> to lerp towards </param>
         /// <param name="t"> The t of the lerp </param>
-        public static void LerpTo(this CameraConfiguration self, CameraConfiguration cameraConfiguration, float t)
+        public static void LerpTo(this ref CameraConfiguration self, CameraConfiguration cameraConfiguration, float t)
         {
             self.UpdateRotation(Quaternion.Lerp(self.GetRotation(), cameraConfiguration.GetRotation(), t));
             self.pivot = Vector3.Lerp(self.pivot, cameraConfiguration.pivot, t);
