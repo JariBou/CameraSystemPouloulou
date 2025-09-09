@@ -72,3 +72,4 @@ crashlytics-build.properties
 
 # Ignore this file
 GitStartRepoUnity.bat
+*.vsconfig
