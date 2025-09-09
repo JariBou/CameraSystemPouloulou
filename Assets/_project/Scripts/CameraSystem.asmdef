@@ -1,6 +1,6 @@
 {
     "name": "CameraSystem",
-    "rootNamespace": "CameraSystem.Scripts",
+    "rootNamespace": "CameraSystem",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
