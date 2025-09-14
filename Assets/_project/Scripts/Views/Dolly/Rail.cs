@@ -98,6 +98,13 @@ namespace CameraSystem
             int iterator = 0;
             float tempDistance = 0;
 
+            if (isLoop)
+            {
+                while (distance > length)
+                {
+                    distance -= length;
+                }
+            }
             // start from first child
             while (distance > 0)
             {
@@ -109,9 +116,12 @@ namespace CameraSystem
                         return children[iterator].position;
                     } else
                     {
-                        Vector3 AB = children.First().position - children[iterator].position;
-                        Vector3 D = AB.normalized;
-                        railPos = children[iterator].position + D * distance;
+                        Vector3 start = children[iterator].position;
+                        Vector3 end = children.First().position;
+
+                        // Get point at specific percentage along the segment (0.0 to 1.0)
+                        float t = distance / Vector3.Distance(start, end);
+                        railPos = Vector3.Lerp(start, end, t);
                         return railPos;
                     }
                 }
