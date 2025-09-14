@@ -29,7 +29,7 @@ namespace CameraSystem._project.Scripts
         [SerializeField]
         private List<ViewBase> _activeViews = new();
 
-        [SerializeField, Range(0.01f, 10f)]
+        [SerializeField, Range(0.01f, 1000f)]
         private float _speed = 0.1f;
 
         public void Awake()

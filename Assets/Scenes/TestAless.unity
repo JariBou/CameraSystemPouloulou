@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15493178}
   m_Layer: 0
-  m_Name: Child (1)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 15493177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -1, z: 0}
+  m_LocalPosition: {x: -7.39, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167951215}
   m_Layer: 0
-  m_Name: Sebastian (2)
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 167951214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.84, y: 4.74, z: 0}
+  m_LocalPosition: {x: -20.92, y: 4.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,6 +440,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &925582203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925582204}
+  m_Layer: 0
+  m_Name: 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &925582204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925582203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.37, y: 10.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1357290960}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &981723088
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 981723089}
   m_Layer: 0
-  m_Name: Child
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +496,7 @@ Transform:
   m_GameObject: {fileID: 981723088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.68, y: 0, z: 0}
+  m_LocalPosition: {x: -4.37, y: 2.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -481,7 +512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1001181054}
   m_Layer: 0
-  m_Name: Sebastian (1)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,12 +565,13 @@ MonoBehaviour:
   weight: 1
   isActiveOnStart: 1
   roll: 0
-  fov: 0
+  fov: 30
   distance: 0
   target: {fileID: 2004843936}
   rail: {fileID: 1357290959}
   distanceOnRail: 0
-  speed: 3
+  speed: 5.3
+  IsAuto: 1
 --- !u!4 &1198452869
 Transform:
   m_ObjectHideFlags: 0
@@ -554,6 +586,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1321582134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321582135}
+  m_Layer: 0
+  m_Name: 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321582135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321582134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.69, y: 10.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1357290960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1357290958
 GameObject:
@@ -584,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d68818c269011642b34d62b24c5f0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLoop: 0
+  isLoop: 1
   length: 0
   TempDistance: 0
   TempSavedPos: {x: 0, y: 0, z: 0}
@@ -606,6 +669,8 @@ Transform:
   - {fileID: 1733511705}
   - {fileID: 1001181054}
   - {fileID: 167951215}
+  - {fileID: 1321582135}
+  - {fileID: 925582204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1546450042
@@ -718,7 +783,7 @@ MonoBehaviour:
   camera: {fileID: 874323855}
   _activeViews:
   - {fileID: 1198452868}
-  _speed: 10
+  _speed: 72
 --- !u!4 &1690869059
 Transform:
   m_ObjectHideFlags: 0
@@ -744,7 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1733511705}
   m_Layer: 0
-  m_Name: Sebastian
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,7 +824,7 @@ Transform:
   m_GameObject: {fileID: 1733511704}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 4, z: 0}
+  m_LocalPosition: {x: -13.53, y: -2.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

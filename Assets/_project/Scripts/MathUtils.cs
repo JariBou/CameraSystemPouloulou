@@ -37,6 +37,21 @@ namespace CameraSystem._project.Scripts
                         .ToArray()),
                 t);
         }
+
+        public static Vector3 GetNearestPointOnSegment(Vector3 a, Vector3 b, Vector3 target)
+        {
+            Vector3 AB = b - a;
+            Vector3 ABNormal = AB.normalized;
+            Vector3 AC = target - a;
+            // Calcul du produit scalaire entre ACible et la norme n de AB
+            float scalar = (ABNormal.x * AC.x) + (ABNormal.y * AC.y) + (ABNormal.z * AC.z);
+            // Borner le résultat du pro scalaire entre 0 et la distance AB
+            scalar = Mathf.Clamp(scalar, 0, AB.magnitude);
+            // Calculer la position la plus proche de la cible sur le segment
+            // projC = A + n * produit scalaire
+            Vector3 projC = a + ABNormal * scalar;
+            return projC;
+        }
     }
     
     public static class Vector3ArrayExtensions{

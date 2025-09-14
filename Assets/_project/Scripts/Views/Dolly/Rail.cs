@@ -1,3 +1,4 @@
+using CameraSystem._project.Scripts;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,34 @@ namespace CameraSystem
         public float GetLength()
         {
             return length;
+        }
+
+        public Vector3 GetNearestPoint(Vector3 targetPos)
+        {
+            Vector3 savedPos = Vector3.zero;
+            float cachedDistance = float.PositiveInfinity;
+
+            if (children.Count < 2)
+            {
+                throw new System.Exception("Not enough points in rail");
+            }
+
+            for (int i = 0; i < children.Count - (isLoop ? 0 : 1); i++)
+            {
+                float newDistance = 0;
+                // calculer pos
+                Vector3 newPos = MathUtils.GetNearestPointOnSegment(children[i].position, 
+                    children[(i + 1)%children.Count].position, 
+                    targetPos);
+                // calculer distance
+                newDistance = (newPos - targetPos).sqrMagnitude;
+                if (newDistance < cachedDistance)
+                {
+                    cachedDistance = newDistance;
+                    savedPos = newPos;
+                }
+            }
+            return savedPos;
         }
 
         public Vector3 GetPosition(float distance)

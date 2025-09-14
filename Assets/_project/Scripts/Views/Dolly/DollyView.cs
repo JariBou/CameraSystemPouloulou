@@ -1,7 +1,7 @@
 using CameraSystem._project.Scripts;
 using CameraSystem._project.Scripts.Views;
+using System;
 using UnityEngine;
-
 namespace CameraSystem
 {
     public class DollyView : ViewBase
@@ -18,20 +18,29 @@ namespace CameraSystem
         private Vector2 YawPitch;
         private void Update()
         {
+            // get angle to target
             YawPitch = CalculateYawPitchToTarget(target.transform.position);
-            float axisX = Input.GetAxis("Horizontal");
-            distanceOnRail += (axisX * Time.deltaTime) * speed;
 
-            transform.position = rail.GetPosition(distanceOnRail);
+            if(IsAuto)
+            {
+                transform.position = rail.GetNearestPoint(target.transform.position);
+            } else
+            {
+                float axisX = Input.GetAxis("Horizontal");
+                distanceOnRail += (axisX * Time.deltaTime) * speed;
+
+                transform.position = rail.GetPosition(distanceOnRail);
+            }
         }
+
 
         public Vector2 CalculateYawPitchToTarget(Vector3 targetPosition)
         {
             Vector3 direction = targetPosition - this.transform.position;
+            direction = Vector3.Normalize(direction);
 
             float yaw = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float horizontalDistance = Mathf.Sqrt(direction.x * direction.x + direction.z * direction.z);
-            float pitch = Mathf.Atan2(direction.y, horizontalDistance) * Mathf.Rad2Deg;
+            float pitch = -Mathf.Asin(direction.y) * Mathf.Rad2Deg;
 
             return new Vector2(yaw, pitch);
         }
