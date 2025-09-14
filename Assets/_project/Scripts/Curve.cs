@@ -7,7 +7,7 @@ namespace CameraSystem._project.Scripts
     [Serializable]
     public class Curve
     {
-        public List<Vector3> points;
+        public List<Vector3> points = new(3);
         [Range(10, 10000)]
         public float precision = 1000;
 

@@ -1,0 +1,16 @@
+{
+    "name": "CameraSystem.Editor",
+    "rootNamespace": "CameraSystem.Editor",
+    "references": ["GUID:5b486a3e47b87ab459d4f960dd933b76"],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
