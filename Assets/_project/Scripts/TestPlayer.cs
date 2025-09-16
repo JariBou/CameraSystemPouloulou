@@ -12,21 +12,19 @@ namespace CameraSystem._project.Scripts
         private float _angularSpeed;
         public void Update()
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
             {
-                // transform.position += Vector3.left * (_speed * Time.deltaTime);
                 transform.rotation *= Quaternion.AngleAxis(-90 * _angularSpeed * Time.deltaTime, Vector3.forward);
             } 
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
             {
-                // transform.position += Vector3.right * (_speed * Time.deltaTime);
                 transform.rotation *= Quaternion.AngleAxis(90 * _angularSpeed * Time.deltaTime, Vector3.forward);
             } 
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W))
             {
                 transform.position += -transform.up * (_speed * Time.deltaTime);
             } 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.S))
             {
                 transform.position += transform.up * (_speed * Time.deltaTime);
             }

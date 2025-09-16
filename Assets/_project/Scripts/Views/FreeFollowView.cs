@@ -24,8 +24,25 @@ namespace CameraSystem._project.Scripts.Views
 
         private void Update()
         {
-            float axisX = Input.GetAxis("Horizontal");
-            float axisY = Input.GetAxis("Vertical");
+            float axisX = 0;
+            float axisY = 0;
+            
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                axisX -= 1;
+            } 
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                axisX += 1;
+            } 
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                axisY -= 1;
+            } 
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                axisY += 1;
+            }
             
             _curvePosition = Math.Clamp(_curvePosition + axisY * Time.deltaTime, 0f, 1f);
             

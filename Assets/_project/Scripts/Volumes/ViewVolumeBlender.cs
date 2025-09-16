@@ -1,24 +1,24 @@
-using CameraSystem._project.Scripts.Views;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using CameraSystem._project.Scripts.Views;
 using UnityEngine;
 
-namespace CameraSystem
+namespace CameraSystem._project.Scripts.Volumes
 {
     public class ViewVolumeBlender : MonoBehaviour
     {
-        private List<ViewVolumeBase> _activeViewVolumes;
-        private Dictionary<ViewBase, List<ViewVolumeBase>> _volumesPerView;
+        private List<ViewVolumeBase> _activeViewVolumes = new();
+        private Dictionary<ViewBase, List<ViewVolumeBase>> _volumesPerView = new();
 
-        public static ViewVolumeBlender instance;
+        public static ViewVolumeBlender Instance;
 
         private void Awake()
         {
-            if (instance != null)
+            if (Instance != null)
             {
-                Destroy(instance.gameObject);
+                Destroy(Instance.gameObject);
             }
-            instance = this;
+            Instance = this;
         }
 
         public void AddVolume(ViewVolumeBase volume)
@@ -51,5 +51,13 @@ namespace CameraSystem
             
         }
 
+        private void OnGUI()
+        {
+            GUILayout.Label("Active View Volumes:");
+            foreach (ViewVolumeBase volume in _activeViewVolumes)
+            {
+                GUILayout.Label(volume.GetType().Name);
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 using CameraSystem._project.Scripts.Views;
 using UnityEngine;
 
-namespace CameraSystem
+namespace CameraSystem._project.Scripts.Volumes
 {
     public abstract class ViewVolumeBase : MonoBehaviour
     {
@@ -20,10 +20,10 @@ namespace CameraSystem
             IsActive = isActive;
             if (IsActive)
             {
-                ViewVolumeBlender.instance.RemoveVolume(this);
+                ViewVolumeBlender.Instance.AddVolume(this);
             } else
             {
-                ViewVolumeBlender.instance.AddVolume(this);
+                ViewVolumeBlender.Instance.RemoveVolume(this);
             }
 
         }
