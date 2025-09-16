@@ -56,7 +56,7 @@ namespace CameraSystem._project.Scripts.Volumes
             GUILayout.Label("Active View Volumes:");
             foreach (ViewVolumeBase volume in _activeViewVolumes)
             {
-                GUILayout.Label(volume.GetType().Name);
+                GUILayout.Label($"{volume.GetType().Name} - {volume.ComputeSelfWeight()}");
             }
         }
     }
