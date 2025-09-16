@@ -21,18 +21,27 @@ namespace CameraSystem._project.Scripts.Volumes
             }
             Instance = this;
         }
-        private void Update()
+        public void Update()
         {
             List<ViewVolumeBase> orderedList = new List<ViewVolumeBase>(_activeViewVolumes);
             OrderListVolumes(orderedList);
             //En utilisant cette liste triée, pour chaque volume actif "v" :
+
             foreach (ViewVolumeBase v in orderedList)
             {
-                Debug.Log(v.name + " view with " + v.Priority + " priority");
+                Debug.Log(v.name + " volume with " + v.Priority + " priority");
                 //Calculer son poids avec « weight = v.GetSelfWeight() » et le borner entre 0 et 1,
+                float weight = v.ComputeSelfWeight();
+                Mathf.Clamp(weight, 0.0f, 1.0f);
+
                 //Calculer le poids restant avec: « remainingWeight = 1.0f - weight »,
+                float remainingWeight = 1.0f - weight;
                 //Multiplier le poids de toutes les vues actives par "remainingWeight",
+                foreach (ViewVolumeBase v2 in _activeViewVolumes)
+                    v2.View.weight *= remainingWeight;
                 //Ajouter "weight" au poids de la vue associée au volume.
+                v.View.weight += weight;
+                Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
             }
         }
 
@@ -66,11 +75,6 @@ namespace CameraSystem._project.Scripts.Volumes
                 _volumesPerView.Add(volume.View, new List<ViewVolumeBase>() {volume});
                 volume.View.SetActive(true);
             }
-        }
-
-        public void Update()
-        {
-            
         }
 
         public void RemoveVolume(ViewVolumeBase volume)
