@@ -8,7 +8,7 @@ namespace CameraSystem._project.Scripts.Volumes
         public int Priority = 0;
         public ViewBase View;
 
-        private int Uid;
+        public int Uid;
         private static int NextUid = 0;
         private static int PrevUid = 0;
         protected bool IsActive { get; private set; }

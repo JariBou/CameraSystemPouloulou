@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CameraSystem._project.Scripts.Views;
 using UnityEngine;
 
@@ -19,6 +20,38 @@ namespace CameraSystem._project.Scripts.Volumes
                 Destroy(Instance.gameObject);
             }
             Instance = this;
+        }
+        private void Update()
+        {
+            List<ViewVolumeBase> orderedList = new List<ViewVolumeBase>(_activeViewVolumes);
+            OrderListVolumes(orderedList);
+            //En utilisant cette liste triée, pour chaque volume actif "v" :
+            foreach (ViewVolumeBase v in orderedList)
+            {
+                Debug.Log(v.name + " view with " + v.Priority + " priority");
+                //Calculer son poids avec « weight = v.GetSelfWeight() » et le borner entre 0 et 1,
+                //Calculer le poids restant avec: « remainingWeight = 1.0f - weight »,
+                //Multiplier le poids de toutes les vues actives par "remainingWeight",
+                //Ajouter "weight" au poids de la vue associée au volume.
+            }
+        }
+
+        //_activeViewVolumes.OrderBy(o => o.Priority).ToList
+
+        private void OrderListVolumes(List<ViewVolumeBase> outList)
+        {
+
+            outList.Sort((a, b) =>
+            {
+                
+                if (a.Priority == b.Priority)
+                {
+                    return a.Uid.CompareTo(b.Uid);
+                }
+
+                return a.Priority.CompareTo(b.Priority);
+
+            });
         }
 
         public void AddVolume(ViewVolumeBase volume)
