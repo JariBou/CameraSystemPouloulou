@@ -9,17 +9,8 @@ namespace CameraSystem._project.Scripts.Views
     public abstract class ViewBase : MonoBehaviour
     {
         public float weight;
+
         
-        public bool isActiveOnStart;
-
-        private void Start()
-        {
-            if (isActiveOnStart)
-            {
-                SetActive(true);
-            }
-        }
-
         public virtual CameraConfiguration GetConfiguration()
         {
             return new CameraConfiguration();
