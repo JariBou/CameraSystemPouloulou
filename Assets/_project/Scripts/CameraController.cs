@@ -32,6 +32,8 @@ namespace CameraSystem._project.Scripts
         [SerializeField, Range(0.01f, 1000f)]
         private float _speed = 0.1f;
 
+        private bool _isCutRequested;
+
         public void Awake()
         {
             Instance = this;
@@ -51,7 +53,17 @@ namespace CameraSystem._project.Scripts
         private void Update()
         {
             _targetCameraConfiguration = ComputeAverage();
+            if (_isCutRequested)
+            {
+                _currentCameraConfiguration = _targetCameraConfiguration;
+                _isCutRequested = false;
+            }
             ApplyConfiguration();
+        }
+
+        public void Cut()
+        {
+            _isCutRequested = true;
         }
         
         void ApplyConfiguration()

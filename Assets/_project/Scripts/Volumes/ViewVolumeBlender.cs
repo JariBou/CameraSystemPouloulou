@@ -35,6 +35,11 @@ namespace CameraSystem._project.Scripts.Volumes
             }
         }
 
+        public void Update()
+        {
+            
+        }
+
         public void RemoveVolume(ViewVolumeBase volume)
         {
             _activeViewVolumes.Remove(volume);
