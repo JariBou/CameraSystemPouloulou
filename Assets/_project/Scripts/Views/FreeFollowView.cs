@@ -19,8 +19,8 @@ namespace CameraSystem._project.Scripts.Views
 
         private Matrix4x4 _curveToWorldMatrix;
 
-        internal Curve Curve;
-        internal GameObject Target;
+        internal Curve Curve => _curve;
+        internal GameObject Target => _target;
 
         private void Update()
         {
@@ -32,11 +32,6 @@ namespace CameraSystem._project.Scripts.Views
             _yaw += axisX * _yawSpeed * Time.deltaTime;
 
             _curveToWorldMatrix = Matrix4x4.TRS(_target.transform.position, Quaternion.Euler(0, _yaw, 0), Vector3.one);
-
-            // for (int i = 0; i < _curve.points.Count; i++)
-            // {
-            //     _curve.points[i] = curveToWorldMatrix.MultiplyPoint(_curve.points[i]);
-            // }
         }
         
         private Vector3 GetTargetDirection()
@@ -50,9 +45,7 @@ namespace CameraSystem._project.Scripts.Views
             
             return new CameraConfiguration(
                  Mathf.Atan2(targetDirection.x, targetDirection.z) * Mathf.Rad2Deg,
-                 // 0,
                  -Mathf.Asin(targetDirection.y) * Mathf.Rad2Deg,
-                 // 0,
                  0,
                  _curveToWorldMatrix.MultiplyPoint(_curve.GetPosition(_curvePosition)),
                  0,
@@ -61,7 +54,19 @@ namespace CameraSystem._project.Scripts.Views
 
         private void OnDrawGizmos()
         {
-            _curve.DrawGizmo(transform.localToWorldMatrix);
+            if (_target != null)
+            {
+                _curve.DrawGizmo(transform.localToWorldMatrix, GetTargetOffset());
+            }
+            else
+            {
+                _curve.DrawGizmo(transform.localToWorldMatrix);
+            }
+        }
+
+        public Vector3 GetTargetOffset()
+        {
+            return _target != null ? _target.transform.position - transform.position : Vector3.zero;
         }
     }
     

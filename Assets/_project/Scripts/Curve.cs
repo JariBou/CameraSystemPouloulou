@@ -41,5 +41,22 @@ namespace CameraSystem._project.Scripts
                 t += 1f/precision; 
             }
         }
+        
+        public void DrawGizmo(Matrix4x4 localToWorldMatrix, Vector3 offset)
+        {
+            Gizmos.color = pointColor;
+            foreach (Vector3 point in points)
+            {
+                Gizmos.DrawSphere(offset + localToWorldMatrix.MultiplyPoint(point), 0.3f);
+            }
+
+            Gizmos.color = curveColor;
+            float t = 0;
+            while (t < 1f)
+            {
+                Gizmos.DrawSphere(offset + GetPosition(t, localToWorldMatrix), 0.1f);
+                t += 1f/precision; 
+            }
+        }
     }
 }

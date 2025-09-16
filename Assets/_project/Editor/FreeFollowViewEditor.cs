@@ -18,15 +18,15 @@ namespace CameraSystem.Editor._project.Editor
             {
                 EditorGUI.BeginChangeCheck();
                 Vector3 point = Target.Curve.points[i];
-                Vector3 positionHandle = Handles.PositionHandle(Target.transform.localToWorldMatrix.MultiplyPoint(point) * 1/scale, Quaternion.identity);
+                Vector3 positionHandle = Handles.PositionHandle(
+                    (Target.GetTargetOffset() + Target.transform.localToWorldMatrix.MultiplyPoint(point)) * 1/scale, Quaternion.identity);
                 if (EditorGUI.EndChangeCheck())
                 {
                     Undo.RecordObject(target, "Move Points");
-                    Target.Curve.points[i] = Target.transform.worldToLocalMatrix.MultiplyPoint(positionHandle * scale);
+                    Target.Curve.points[i] = Target.transform.worldToLocalMatrix.MultiplyPoint(
+                        ((positionHandle) * scale) - Target.GetTargetOffset());
                 }
             }
-            
-            
         }
     }
 }
