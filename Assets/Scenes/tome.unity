@@ -820,6 +820,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 8.1
   _angularSpeed: 4.6
+--- !u!1 &1522857182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1522857184}
+  - component: {fileID: 1522857183}
+  m_Layer: 0
+  m_Name: SphereThing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1522857183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522857182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cc4da93e794fa48216613c77a35ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority: 3
+  View: {fileID: 2103588479}
+  _target: {fileID: 919132148048929197}
+  _innerRadius: 20.91
+  _outerRadius: 47.4
+--- !u!4 &1522857184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522857182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.6, y: 1.5223686, z: 45.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1546450042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,3 +1177,4 @@ SceneRoots:
   - {fileID: 199593901}
   - {fileID: 699563669}
   - {fileID: 1052005891}
+  - {fileID: 1522857184}

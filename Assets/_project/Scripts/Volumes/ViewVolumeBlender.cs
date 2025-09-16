@@ -68,6 +68,11 @@ namespace CameraSystem._project.Scripts.Volumes
             }
         }
 
+        public void Update()
+        {
+            
+        }
+
         public void RemoveVolume(ViewVolumeBase volume)
         {
             _activeViewVolumes.Remove(volume);
@@ -89,7 +94,7 @@ namespace CameraSystem._project.Scripts.Volumes
             GUILayout.Label("Active View Volumes:");
             foreach (ViewVolumeBase volume in _activeViewVolumes)
             {
-                GUILayout.Label(volume.GetType().Name);
+                GUILayout.Label($"{volume.GetType().Name} - {volume.ComputeSelfWeight()}");
             }
         }
     }
