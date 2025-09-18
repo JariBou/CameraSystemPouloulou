@@ -32,7 +32,7 @@ namespace CameraSystem._project.Scripts.Volumes
                 Debug.Log(v.name + " volume with " + v.Priority + " priority");
                 //Calculer son poids avec « weight = v.GetSelfWeight() » et le borner entre 0 et 1,
                 float weight = v.ComputeSelfWeight();
-                Mathf.Clamp(weight, 0.0f, 1.0f);
+                weight = Mathf.Clamp(weight, 0.0f, 1.0f);
 
                 //Calculer le poids restant avec: « remainingWeight = 1.0f - weight »,
                 float remainingWeight = 1.0f - weight;
