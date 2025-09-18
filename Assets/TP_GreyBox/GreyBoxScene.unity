@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8742064}
   - component: {fileID: 8742065}
   m_Layer: 0
-  m_Name: FixedView (1)
+  m_Name: Fixed Follow View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 8742063}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.204831, y: 0.067485824, z: 1.0549645}
+  m_LocalPosition: {x: 4.6, y: 25, z: -8.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -160,14 +160,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8742063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd50a53029e84f6998b70d6050188fd9, type: 3}
+  m_Script: {fileID: 11500000, guid: daaf4f124ada4aa0b09066280b4c37b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
-  Yaw: 0
-  Pitch: 0
-  Roll: 50
-  Fov: 50
+  roll: 0
+  fov: 70
+  target: {fileID: 1206557205}
 --- !u!1 &28023923
 GameObject:
   m_ObjectHideFlags: 0
@@ -44529,7 +44528,7 @@ MonoBehaviour:
   Priority: 20
   View: {fileID: 659592728}
   Uid: 0
-  _cutOnSwitch: 0
+  _cutOnSwitch: 1
   targetTag: Player
 --- !u!65 &843553223
 BoxCollider:
@@ -87998,7 +87997,7 @@ Transform:
   m_GameObject: {fileID: 1266177711}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27, y: 0, z: -24.1}
+  m_LocalPosition: {x: 10.09, y: 0, z: -1.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88021,8 +88020,8 @@ MonoBehaviour:
   Uid: 1
   _cutOnSwitch: 0
   _target: {fileID: 1206557205}
-  _innerRadius: 20.91
-  _outerRadius: 47.4
+  _innerRadius: 6.68
+  _outerRadius: 14.5
 --- !u!43 &1306205332
 Mesh:
   m_ObjectHideFlags: 0
