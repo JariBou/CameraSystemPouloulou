@@ -89034,7 +89034,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 203418385}
   _activeViews: []
-  _speed: 5.67
+  _speed: 1
+  shakeDuration: 6
+  shakeSpeed: 10
+  noise: 5
+  shakeXmax: 1
+  shakeYmax: 1
 --- !u!4 &1320054851
 Transform:
   m_ObjectHideFlags: 0

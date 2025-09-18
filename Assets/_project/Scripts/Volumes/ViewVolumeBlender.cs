@@ -39,7 +39,7 @@ namespace CameraSystem._project.Scripts.Volumes
 
             foreach (ViewVolumeBase v in orderedList)
             {
-                Debug.Log(v.name + " volume with " + v.Priority + " priority");
+                //Debug.Log(v.name + " volume with " + v.Priority + " priority");
                 //Calculer son poids avec « weight = v.GetSelfWeight() » et le borner entre 0 et 1,
                 float weight = v.ComputeSelfWeight();
                 weight = Mathf.Clamp(weight, 0.0f, 1.0f);
@@ -53,7 +53,7 @@ namespace CameraSystem._project.Scripts.Volumes
                 }
                 //Ajouter "weight" au poids de la vue associée au volume.
                 v.View.weight += weight;
-                Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
+                //Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
             }
         }
 

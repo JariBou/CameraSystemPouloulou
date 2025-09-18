@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using CameraSystem._project.Scripts.Extensions;
 using CameraSystem._project.Scripts.Views;
@@ -9,16 +10,17 @@ namespace CameraSystem._project.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        public static CameraController Instance { 
+        public static CameraController Instance
+        {
             get => instance;
-            private set 
+            private set
             {
-                if(instance != null)
+                if (instance != null)
                 {
                     Destroy(instance.gameObject);
                 }
                 instance = value;
-            } 
+            }
         }
 
         public List<ViewBase> ActiveViews { get => _activeViews; set => _activeViews = value; }
@@ -26,7 +28,7 @@ namespace CameraSystem._project.Scripts
         private static CameraController instance;
 
         [FormerlySerializedAs("Camera")] public Camera camera;
-        
+
         private CameraConfiguration _currentCameraConfiguration;
         private CameraConfiguration _targetCameraConfiguration;
         [SerializeField]
@@ -55,8 +57,15 @@ namespace CameraSystem._project.Scripts
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                if (shakeCoroutine != null)
+                    StopCoroutine(shakeCoroutine);
+                shakeCoroutine = StartCoroutine("ShakeCoroutine");
+            }
+
             _targetCameraConfiguration = ComputeAverage();
-            if (_isCutRequested)    
+            if (_isCutRequested)
             {
                 _currentCameraConfiguration = _targetCameraConfiguration;
                 _isCutRequested = false;
@@ -64,16 +73,48 @@ namespace CameraSystem._project.Scripts
             ApplyConfiguration();
         }
 
+        public float shakeDuration = 2.0f;
+        public float shakeSpeed = 10.0f;
+        public float noise = 5.0f;
+        public float shakeXmax = 10.0f;
+        public float shakeYmax = 10.0f;
+        private Coroutine shakeCoroutine;
+        private IEnumerator ShakeCoroutine()
+        {
+            Vector3 savedCamPosition = camera.transform.position;
+            float shakeDurationCopy = shakeDuration;
+            float intensity = 1.0f;
+            float randomSeed = UnityEngine.Random.Range(0f, 100f);
+
+            Debug.Log("started shake coroutine");
+            while (shakeDurationCopy > 0)
+            {
+                shakeDurationCopy -= Time.deltaTime;
+                // je comprends pas cette ligne
+                intensity = Mathf.Max(intensity - Time.deltaTime * shakeSpeed, 0);
+                float t = Time.deltaTime * shakeSpeed;
+                float noiseX = Mathf.PerlinNoise(randomSeed, t) - 0.5f;
+                float noiseY = Mathf.PerlinNoise(randomSeed + 1f, t + 1f) - 0.5f;
+                float offsetX = noiseX * shakeXmax * intensity;
+                float offsetY = noiseY * shakeYmax * intensity;
+
+                camera.transform.position = new Vector3(camera.transform.position.x + offsetX, camera.transform.position.y + offsetY, camera.transform.position.z);
+                yield return null;
+            }
+            camera.transform.position = savedCamPosition;
+            Debug.Log("ended shake coroutine");
+        }
+
         public void Cut()
         {
             _isCutRequested = true;
         }
-        
+
         void ApplyConfiguration()
         {
             // _currentCameraConfiguration = CameraConfiguration.Lerp(_currentCameraConfiguration, _targetCameraConfiguration, Time.deltaTime * _speed);
             _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
-            
+
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();
             camera.fieldOfView = _currentCameraConfiguration.fov;
@@ -93,7 +134,7 @@ namespace CameraSystem._project.Scripts
             float rollSum = 0f;
             float distanceSum = 0f;
             float fovSum = 0f;
-            Vector3 pivotSum  = Vector3.zero;
+            Vector3 pivotSum = Vector3.zero;
             float weightSum = 0f;
             foreach (ViewBase view in _activeViews)
             {
@@ -112,9 +153,9 @@ namespace CameraSystem._project.Scripts
                 weightSum = 1;
             }
 
-            return new CameraConfiguration(ComputeAverageYaw(), pitchSum/weightSum, rollSum/weightSum, pivotSum/weightSum, distanceSum/weightSum, fovSum/weightSum);
+            return new CameraConfiguration(ComputeAverageYaw(), pitchSum / weightSum, rollSum / weightSum, pivotSum / weightSum, distanceSum / weightSum, fovSum / weightSum);
         }
-        
+
         private float ComputeAverageYaw()
         {
             Vector2 sum = Vector2.zero;
@@ -146,6 +187,5 @@ namespace CameraSystem._project.Scripts
         {
             _currentCameraConfiguration.DrawGizmos(Color.red);
         }
-
     }
 }
