@@ -283,6 +283,7 @@ MonoBehaviour:
     curveColor: {r: 1, g: 1, b: 1, a: 1}
   _yawSpeed: 180
   _target: {fileID: 919132148048929197}
+  _showOrbitCircles: 0
 --- !u!4 &442818308
 Transform:
   m_ObjectHideFlags: 0
@@ -536,6 +537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority: 1
   View: {fileID: 1591626183}
+  Uid: 0
+  _cutOnSwitch: 0
 --- !u!4 &699563669
 Transform:
   m_ObjectHideFlags: 0
@@ -769,6 +772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority: 2
   View: {fileID: 442818307}
+  Uid: 0
+  _cutOnSwitch: 0
   targetTag: Player
 --- !u!65 &1052005890
 BoxCollider:
@@ -851,6 +856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority: 3
   View: {fileID: 2103588479}
+  Uid: 0
+  _cutOnSwitch: 0
   _target: {fileID: 919132148048929197}
   _innerRadius: 20.91
   _outerRadius: 47.4
