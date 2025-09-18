@@ -27,5 +27,10 @@ namespace CameraSystem._project.Scripts.Views
                 CameraController.Instance.RemoveView(this);
             }
         }
+
+        private void OnDrawGizmos()
+        {
+            GetConfiguration().DrawGizmos(Color.red);
+        }
     }
 }

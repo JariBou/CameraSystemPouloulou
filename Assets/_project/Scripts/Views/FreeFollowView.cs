@@ -36,11 +36,11 @@ namespace CameraSystem._project.Scripts.Views
             
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                axisX -= 1;
+                axisX += 1;
             } 
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                axisX += 1;
+                axisX -= 1;
             } 
             if (Input.GetKey(KeyCode.DownArrow))
             {
