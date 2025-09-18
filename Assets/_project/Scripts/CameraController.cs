@@ -20,6 +20,9 @@ namespace CameraSystem._project.Scripts
                 instance = value;
             } 
         }
+
+        public List<ViewBase> ActiveViews { get => _activeViews; set => _activeViews = value; }
+
         private static CameraController instance;
 
         [FormerlySerializedAs("Camera")] public Camera camera;
@@ -53,7 +56,7 @@ namespace CameraSystem._project.Scripts
         private void Update()
         {
             _targetCameraConfiguration = ComputeAverage();
-            if (_isCutRequested)
+            if (_isCutRequested)    
             {
                 _currentCameraConfiguration = _targetCameraConfiguration;
                 _isCutRequested = false;

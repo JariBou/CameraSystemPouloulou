@@ -24,6 +24,11 @@ namespace CameraSystem._project.Scripts.Views
         internal Curve Curve => _curve;
         internal GameObject Target => _target;
 
+        private void Awake()
+        {
+            _curveToWorldMatrix = Matrix4x4.TRS(_target.transform.position, Quaternion.Euler(0, _yaw, 0), Vector3.one);
+        }
+
         private void Update()
         {
             float axisX = 0;
