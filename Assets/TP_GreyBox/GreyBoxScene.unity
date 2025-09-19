@@ -89035,11 +89035,12 @@ MonoBehaviour:
   camera: {fileID: 203418385}
   _activeViews: []
   _speed: 1
-  shakeDuration: 6
-  shakeSpeed: 10
+  shakeDuration: 1.5
   noise: 5
-  shakeXmax: 1
-  shakeYmax: 1
+  shakeSpeed: 10
+  shakeXmax: 30
+  shakeYmax: 30
+  shakeZmax: 30
 --- !u!4 &1320054851
 Transform:
   m_ObjectHideFlags: 0

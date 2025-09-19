@@ -31,6 +31,7 @@ namespace CameraSystem._project.Scripts
 
         private CameraConfiguration _currentCameraConfiguration;
         private CameraConfiguration _targetCameraConfiguration;
+        private CameraConfiguration _finalCameraConfiguration;
         [SerializeField]
         private List<ViewBase> _activeViews = new();
 
@@ -61,7 +62,7 @@ namespace CameraSystem._project.Scripts
             {
                 if (shakeCoroutine != null)
                     StopCoroutine(shakeCoroutine);
-                shakeCoroutine = StartCoroutine("ShakeCoroutine");
+                shakeCoroutine = StartCoroutine(ShakeCoroutine());
             }
 
             _targetCameraConfiguration = ComputeAverage();
@@ -73,11 +74,14 @@ namespace CameraSystem._project.Scripts
             ApplyConfiguration();
         }
 
+
         public float shakeDuration = 2.0f;
-        public float shakeSpeed = 10.0f;
         public float noise = 5.0f;
+        public float shakeSpeed = 5.0f;
         public float shakeXmax = 10.0f;
         public float shakeYmax = 10.0f;
+        public float shakeZmax = 10.0f;
+
         private Coroutine shakeCoroutine;
         private IEnumerator ShakeCoroutine()
         {
@@ -86,23 +90,37 @@ namespace CameraSystem._project.Scripts
             float intensity = 1.0f;
             float randomSeed = UnityEngine.Random.Range(0f, 100f);
 
+            float offsetX;
+            float offsetY;
+            float offsetZ;
+            float t = 0;
+            float speed = 1.0f / shakeDuration;
+
             Debug.Log("started shake coroutine");
             while (shakeDurationCopy > 0)
             {
                 shakeDurationCopy -= Time.deltaTime;
-                // je comprends pas cette ligne
-                intensity = Mathf.Max(intensity - Time.deltaTime * shakeSpeed, 0);
-                float t = Time.deltaTime * shakeSpeed;
-                float noiseX = Mathf.PerlinNoise(randomSeed, t) - 0.5f;
-                float noiseY = Mathf.PerlinNoise(randomSeed + 1f, t + 1f) - 0.5f;
-                float offsetX = noiseX * shakeXmax * intensity;
-                float offsetY = noiseY * shakeYmax * intensity;
 
-                camera.transform.position = new Vector3(camera.transform.position.x + offsetX, camera.transform.position.y + offsetY, camera.transform.position.z);
+                intensity = Mathf.Max(intensity - Time.deltaTime * speed, 0);
+                t += Time.deltaTime * shakeSpeed;
+                float noiseX = Mathf.PerlinNoise(randomSeed, t) - 0.5f;
+                float noiseY = Mathf.PerlinNoise(randomSeed + 33.33f, t) - 0.5f;
+                float noiseZ = Mathf.PerlinNoise(randomSeed + 1824.22f, t) - 0.5f;
+                offsetX = noiseX * shakeXmax * intensity * intensity;
+                offsetY = noiseY * shakeYmax * intensity * intensity;
+                offsetZ = noiseZ * shakeZmax * intensity * intensity;
+
+
+                _finalCameraConfiguration = _currentCameraConfiguration;
+                _finalCameraConfiguration.pitch += offsetX;
+                _finalCameraConfiguration.yaw += offsetY;
+                _finalCameraConfiguration.roll += offsetZ;
+
                 yield return null;
             }
-            camera.transform.position = savedCamPosition;
+            _finalCameraConfiguration = _currentCameraConfiguration;
             Debug.Log("ended shake coroutine");
+            shakeCoroutine = null;
         }
 
         public void Cut()
@@ -114,10 +132,16 @@ namespace CameraSystem._project.Scripts
         {
             // _currentCameraConfiguration = CameraConfiguration.Lerp(_currentCameraConfiguration, _targetCameraConfiguration, Time.deltaTime * _speed);
             _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
+            
+            if (shakeCoroutine == null)
+            {
+                _finalCameraConfiguration = _currentCameraConfiguration;
+            }
 
-            camera.transform.position = _currentCameraConfiguration.GetPosition();
-            camera.transform.rotation = _currentCameraConfiguration.GetRotation();
-            camera.fieldOfView = _currentCameraConfiguration.fov;
+            camera.transform.position = _finalCameraConfiguration.GetPosition();
+            camera.transform.rotation = _finalCameraConfiguration.GetRotation();
+            camera.fieldOfView = _finalCameraConfiguration.fov;
+
 
             // camera.transform.position = Vector3.Lerp(_currentCameraConfiguration.GetPosition(), _targetCameraConfiguration.GetPosition(), Time.deltaTime * _speed);
             // camera.transform.rotation = Quaternion.Lerp(_currentCameraConfiguration.GetRotation(), _targetCameraConfiguration.GetRotation(), Time.deltaTime * _speed);
