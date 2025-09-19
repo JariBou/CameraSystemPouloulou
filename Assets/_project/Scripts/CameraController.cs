@@ -135,6 +135,15 @@ namespace CameraSystem._project.Scripts
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();
             camera.fieldOfView = _currentCameraConfiguration.fov;
+
+            if (shakeCoroutine == null)
+            {
+                _finalCameraConfiguration = _currentCameraConfiguration;
+            }
+
+            camera.transform.position = _finalCameraConfiguration.GetPosition();
+            camera.transform.rotation = _finalCameraConfiguration.GetRotation();
+            camera.fieldOfView = _finalCameraConfiguration.fov;
         }
 
         private CameraConfiguration ComputeAverage()

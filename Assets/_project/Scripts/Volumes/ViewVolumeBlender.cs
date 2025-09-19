@@ -47,7 +47,7 @@ namespace CameraSystem._project.Scripts.Volumes
                 }
                 //Ajouter "weight" au poids de la vue associ�e au volume.
                 v.View.weight += weight;
-                Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
+               // Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
             }
         }
 
