@@ -89132,7 +89132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e657718c464f15b737618c481f672e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8.1
+  _speed: 7
   _angularSpeed: 2
 --- !u!23 &1206557209
 MeshRenderer:
@@ -89204,7 +89204,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.013574586, y: 0.7069765, z: 0.7069765, w: -0.013574586}
   m_LocalPosition: {x: 38.19, y: 1.24, z: -17.41}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -89487,6 +89487,12 @@ MonoBehaviour:
   camera: {fileID: 203418385}
   _activeViews: []
   _speed: 5.67
+  shakeDuration: 2
+  noise: 5
+  shakeSpeed: 5
+  shakeXmax: 10
+  shakeYmax: 10
+  shakeZmax: 10
 --- !u!4 &1320054851
 Transform:
   m_ObjectHideFlags: 0
