@@ -1,9 +1,11 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace CameraSystem._project.Scripts
 {
+    /// <summary>
+    /// Dummy test class for Curve, not meant to be clean (explains the #if UNITY_EDITOR)
+    /// </summary>
     public class CurveTest : MonoBehaviour
     {
         public Curve curve;

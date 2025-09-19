@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 3ac84cc9738f4ff9b9bfc667863dbaa9
+timeCreated: 1698857781
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Drawers/PropertyDrawers/TabPropertyDrawer.cs
+  uploadId: 662688

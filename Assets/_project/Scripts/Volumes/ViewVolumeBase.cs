@@ -11,9 +11,9 @@ namespace CameraSystem._project.Scripts.Volumes
         public int Priority = 0;
         public ViewBase View;
 
-        public int Uid;
-        private static int NextUid = 0;
-        private static int PrevUid = 0;
+        private int _uid;
+        public int Uid => _uid;
+        private static int NextUid;
         protected bool IsActive { get; private set; }
 
         [SerializeField] private bool _cutOnSwitch;
@@ -41,7 +41,7 @@ namespace CameraSystem._project.Scripts.Volumes
 
         private void Awake()
         {
-            Uid = NextUid++;
+            _uid = NextUid++;
         }
     }
 }

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e90fb5411ff5e7241858daa04f921028
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/GraphicsLabor.attributes.asmdef
+  uploadId: 662688

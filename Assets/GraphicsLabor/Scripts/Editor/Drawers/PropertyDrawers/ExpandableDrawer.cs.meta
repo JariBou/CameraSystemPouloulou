@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 989d7823338547e6817f55554c4093e2
+timeCreated: 1698674333
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Drawers/PropertyDrawers/ExpandableDrawer.cs
+  uploadId: 662688

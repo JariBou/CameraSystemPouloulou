@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 3800d84db03b4f2e9c6ca8dda6e174ed
+timeCreated: 1705329279
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Core/Tags/ITagHolder.cs
+  uploadId: 662688

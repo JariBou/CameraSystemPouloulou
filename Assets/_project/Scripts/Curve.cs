@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CameraSystem._project.Scripts
 {
@@ -8,11 +9,11 @@ namespace CameraSystem._project.Scripts
     public class Curve
     {
         public List<Vector3> points = new(3);
-        [Range(10, 10000)]
-        public float precision = 1000;
+        [SerializeField, Range(10, 10000)]
+        private float _precision = 1000;
 
-        public Color pointColor = Color.red;
-        public Color curveColor = Color.white;
+        [SerializeField] public Color _pointColor = Color.red;
+        [SerializeField] public Color _curveColor = Color.white;
 
         
         public Vector3 GetPosition(float t)
@@ -27,36 +28,36 @@ namespace CameraSystem._project.Scripts
 
         public void DrawGizmo(Matrix4x4 localToWorldMatrix)
         {
-            Gizmos.color = pointColor;
+            Gizmos.color = _pointColor;
             foreach (Vector3 point in points)
             {
                 Gizmos.DrawSphere(localToWorldMatrix.MultiplyPoint(point), 0.3f);
             }
 
-            Gizmos.color = curveColor;
+            Gizmos.color = _curveColor;
             float t = 0;
             while (t < 1f)
             {
                 Gizmos.DrawSphere(GetPosition(t, localToWorldMatrix), 0.1f);
-                t += 1f/precision; 
+                t += 1f/_precision; 
             }
         }
         
-        public void DrawGizmo(Matrix4x4 localToWorldMatrix, Vector3 offset)
-        {
-            Gizmos.color = pointColor;
-            foreach (Vector3 point in points)
-            {
-                Gizmos.DrawSphere(offset + localToWorldMatrix.MultiplyPoint(point), 0.3f);
-            }
-
-            Gizmos.color = curveColor;
-            float t = 0;
-            while (t < 1f)
-            {
-                Gizmos.DrawSphere(offset + GetPosition(t, localToWorldMatrix), 0.1f);
-                t += 1f/precision; 
-            }
-        }
+        // public void DrawGizmo(Matrix4x4 localToWorldMatrix, Vector3 offset)
+        // {
+        //     Gizmos.color = pointColor;
+        //     foreach (Vector3 point in points)
+        //     {
+        //         Gizmos.DrawSphere(offset + localToWorldMatrix.MultiplyPoint(point), 0.3f);
+        //     }
+        //
+        //     Gizmos.color = curveColor;
+        //     float t = 0;
+        //     while (t < 1f)
+        //     {
+        //         Gizmos.DrawSphere(offset + GetPosition(t, localToWorldMatrix), 0.1f);
+        //         t += 1f/precision; 
+        //     }
+        // }
     }
 }

@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 5391c9b0a522486ea680914165148206
+timeCreated: 1698673860
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/LaborerAttributes/InspectedAttributes/LabelAttribute.cs
+  uploadId: 662688

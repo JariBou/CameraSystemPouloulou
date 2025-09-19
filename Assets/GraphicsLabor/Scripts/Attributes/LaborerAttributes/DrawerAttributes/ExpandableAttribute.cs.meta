@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: f39dd5c4ee1042d4bb07552492ed18e0
+timeCreated: 1698674259
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/LaborerAttributes/DrawerAttributes/ExpandableAttribute.cs
+  uploadId: 662688

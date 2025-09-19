@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 2741d77372be4e32b867042de5520e13
+timeCreated: 1702734182
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/LaborerAttributes/ScriptableObjectAttributes/ManageableAttribute.cs
+  uploadId: 662688

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using CameraSystem._project.Scripts.Extensions;
+using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using UnityEngine;
 
 [assembly: InternalsVisibleTo("CameraSystem.Editor")]
@@ -9,17 +11,27 @@ namespace CameraSystem._project.Scripts.Views
     {
         [SerializeField]
         private Curve _curve;
-        private float _curvePosition = .5f;
 
         [SerializeField]
         private float _yawSpeed = 180f;
-        private float _yaw;
+
         [SerializeField] 
         private GameObject _target;
-
+        
         private Matrix4x4 _curveToWorldMatrix;
-        [SerializeField]
+        [SerializeField] 
+        private int _fov = 50;
+        [SerializeField] private float _distance;
+
+        [SerializeField] 
+        private bool _enableAdvancedOptionsEditing;
+        [SerializeField, Range(0f, 1f), EnableIf(nameof(_enableAdvancedOptionsEditing))]
+        private float _curvePosition = .5f;
+        [SerializeField, EnableIf(nameof(_enableAdvancedOptionsEditing))]
+        private float _yaw;
+        [SerializeField, EnableIf(nameof(_enableAdvancedOptionsEditing))]
         private bool _showOrbitCircles;
+        
 
         internal Curve Curve => _curve;
         internal GameObject Target => _target;
@@ -72,20 +84,26 @@ namespace CameraSystem._project.Scripts.Views
                  -Mathf.Asin(targetDirection.y) * Mathf.Rad2Deg,
                  0,
                  _curveToWorldMatrix.MultiplyPoint(_curve.GetPosition(_curvePosition)),
-                 0,
-                 50);
+                 _distance,
+                 _fov);
         }
 
         private void OnDrawGizmos()
         {
-            if (_target != null)
-            {
-                _curve.DrawGizmo(transform.localToWorldMatrix, GetTargetOffset());
-            }
-            else
-            {
-                _curve.DrawGizmo(transform.localToWorldMatrix);
-            }
+            Vector3 localTargetPosition = _target != null ? _target.transform.position : transform.position;
+            // basically defaults to transform.localToWorldMatrix if target is null (with the added benefit to take the yaw into account)
+            Matrix4x4 curveToWorldMatrix = Matrix4x4.TRS(localTargetPosition, Quaternion.Euler(0, _yaw, 0), Vector3.one);
+            Vector3 targetDirection = (localTargetPosition - curveToWorldMatrix.MultiplyPoint(_curve.GetPosition(_curvePosition))).normalized;
+            
+            new CameraConfiguration(
+                Mathf.Atan2(targetDirection.x, targetDirection.z) * Mathf.Rad2Deg,
+                -Mathf.Asin(targetDirection.y) * Mathf.Rad2Deg,
+                0,
+                curveToWorldMatrix.MultiplyPoint(_curve.GetPosition(_curvePosition)),
+                _distance,
+                _fov).DrawGizmos(Color.red);
+
+            _curve.DrawGizmo(curveToWorldMatrix);
 
             if (!_showOrbitCircles || _curve.points.Count < 1) return;
             
@@ -94,11 +112,10 @@ namespace CameraSystem._project.Scripts.Views
             float t = 0f;
             while (t < 1f)
             {
-                Vector3 realPointCoordinates = transform.localToWorldMatrix.MultiplyPoint(_curve.GetPosition(t)) +
-                                               GetTargetOffset();
-                float realRadius = (realPointCoordinates - Target.transform.position.WithY(realPointCoordinates.y))
+                Vector3 realPointCoordinates = curveToWorldMatrix.MultiplyPoint(_curve.GetPosition(t));
+                float realRadius = (realPointCoordinates - localTargetPosition.WithY(realPointCoordinates.y))
                     .magnitude;
-                Vector3 realCenter = Target.transform.position.WithY(realPointCoordinates.y);
+                Vector3 realCenter = localTargetPosition.WithY(realPointCoordinates.y);
 
                 int increment = 15;
                 for (int i = 0; i < 360; i += increment)
@@ -116,15 +133,15 @@ namespace CameraSystem._project.Scripts.Views
                 t += tIncrement;
             }
 
-            // to be sure the last one is drawn
+            // to be sure the last one is drawn (quick and dirty yes ik)
             {
-                Vector3 realPointCoordinates = transform.localToWorldMatrix.MultiplyPoint(_curve.GetPosition(1)) +
-                                               GetTargetOffset();
-                float realRadius = (realPointCoordinates - Target.transform.position.WithY(realPointCoordinates.y))
+                Vector3 realPointCoordinates = curveToWorldMatrix.MultiplyPoint(_curve.GetPosition(1));
+                
+                float realRadius = (realPointCoordinates - localTargetPosition.WithY(realPointCoordinates.y))
                     .magnitude;
-                Vector3 realCenter = Target.transform.position.WithY(realPointCoordinates.y);
+                Vector3 realCenter = localTargetPosition.WithY(realPointCoordinates.y);
 
-                int increment = 15;
+                const int increment = 15;
                 for (int i = 0; i < 360; i += increment)
                 {
                     Gizmos.DrawLine(realCenter +
@@ -143,14 +160,18 @@ namespace CameraSystem._project.Scripts.Views
         {
             return _target != null ? _target.transform.position - transform.position : Vector3.zero;
         }
-    }
 
-    public static class Vector3Extensions
-    {
-        public static Vector3 WithY(this Vector3 cVector3, float newY)
+        private void OnValidate()
         {
-            return new Vector3(cVector3.x, newY, cVector3.z);
+            switch (_yaw)
+            {
+                case > 180:
+                    _yaw -= 360;
+                    break;
+                case < -180:
+                    _yaw += 360;
+                    break;
+            }
         }
     }
-    
 }

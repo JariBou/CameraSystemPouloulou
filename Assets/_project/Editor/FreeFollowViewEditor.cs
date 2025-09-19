@@ -1,11 +1,12 @@
 ﻿using CameraSystem._project.Scripts.Views;
+using GraphicsLabor.Scripts.Editor;
 using UnityEditor;
 using UnityEngine;
 
 namespace CameraSystem.Editor._project.Editor
 {
     [CustomEditor(typeof(FreeFollowView))]
-    public class FreeFollowViewEditor : UnityEditor.Editor
+    public class FreeFollowViewEditor : GraphicsLaborInspector
     {
         public FreeFollowView Target => target as FreeFollowView;
         

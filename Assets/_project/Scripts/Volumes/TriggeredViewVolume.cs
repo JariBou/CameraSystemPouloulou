@@ -1,17 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CameraSystem._project.Scripts.Volumes
 {
     [RequireComponent(typeof(Collider))]
     public class TriggeredViewVolume : ViewVolumeBase
     {
-        [SerializeField]
-        private string targetTag;
+        [FormerlySerializedAs("targetTag")] [SerializeField]
+        private string _targetTag;
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(targetTag))
+            if (other.gameObject.CompareTag(_targetTag))
             {
                 SetActive(true);
             }
@@ -19,7 +19,7 @@ namespace CameraSystem._project.Scripts.Volumes
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.CompareTag(targetTag))
+            if (other.gameObject.CompareTag(_targetTag))
             {
                 SetActive(false);
             }

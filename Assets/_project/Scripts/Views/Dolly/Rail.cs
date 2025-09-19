@@ -1,11 +1,8 @@
-using CameraSystem._project.Scripts;
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
-namespace CameraSystem
+namespace CameraSystem._project.Scripts.Views.Dolly
 {
     public class Rail : MonoBehaviour
     {

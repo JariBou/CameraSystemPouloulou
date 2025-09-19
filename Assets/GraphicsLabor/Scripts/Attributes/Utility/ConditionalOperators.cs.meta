@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 41848be5d8bc4ecf90c59d35d192ea42
+timeCreated: 1705569774
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/Utility/ConditionalOperators.cs
+  uploadId: 662688

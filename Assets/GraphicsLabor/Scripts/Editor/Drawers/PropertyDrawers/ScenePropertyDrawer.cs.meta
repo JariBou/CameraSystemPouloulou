@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 0282939f0bd540e7a36cba05942f8ec4
+timeCreated: 1698683731
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Drawers/PropertyDrawers/ScenePropertyDrawer.cs
+  uploadId: 662688

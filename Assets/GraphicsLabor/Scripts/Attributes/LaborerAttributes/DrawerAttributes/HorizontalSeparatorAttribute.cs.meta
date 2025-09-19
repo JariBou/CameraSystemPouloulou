@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 27d8eb26f3d0462991099988647d68e1
+timeCreated: 1698671794
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/LaborerAttributes/DrawerAttributes/HorizontalSeparatorAttribute.cs
+  uploadId: 662688

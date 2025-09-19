@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9191c6697bea1ed458b05823deaf6d53
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Utility/GUI/LaborerEditorGUI.cs
+  uploadId: 662688

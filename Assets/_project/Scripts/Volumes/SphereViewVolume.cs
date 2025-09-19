@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CameraSystem._project.Scripts.Volumes
 {
@@ -21,18 +20,16 @@ namespace CameraSystem._project.Scripts.Volumes
 
         public override float ComputeSelfWeight()
         {
-            // float tDistance = (_target.transform.position - transform.position).magnitude - _innerRadius;
+            // return Mathf.Clamp01(1 - Mathf.InverseLerp(_innerRadius, _outerRadius, _distance));
             return Mathf.Clamp01(1 - (_distance - _innerRadius) / (_outerRadius - _innerRadius));
-            // if (tDistance <= 0f) return 1f;
-            return 1-Mathf.InverseLerp(_innerRadius, _outerRadius, _distance);
         }
 
         private void OnValidate()
         {
-            if (_innerRadius > _outerRadius)
-            {
-                _innerRadius = _outerRadius;
-            }
+            if (_outerRadius < 1) _outerRadius = 1f;
+            if (_innerRadius < 0) _innerRadius = 0f;
+            
+            if (_innerRadius > _outerRadius) _innerRadius = _outerRadius;
         }
 
         private void OnDrawGizmos()

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: bf9887d068374a02a32e6e1d63cfb150
+timeCreated: 1698783685
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/LaborerAttributes/InspectedAttributes/TabPropertyAttribute.cs
+  uploadId: 662688
