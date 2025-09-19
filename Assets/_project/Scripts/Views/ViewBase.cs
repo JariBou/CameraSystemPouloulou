@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CameraSystem._project.Scripts.Views
 {
@@ -10,7 +9,7 @@ namespace CameraSystem._project.Scripts.Views
     {
         public float weight;
 
-        
+
         public virtual CameraConfiguration GetConfiguration()
         {
             return new CameraConfiguration();

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 5b6233fdbd294fb5b99422bdc69bfdf0
+timeCreated: 1705243583
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Tags/LaborTagInspector.cs
+  uploadId: 662688

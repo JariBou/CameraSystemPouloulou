@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7531606f5c079e7499d0fbf3a7e4aed0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Core/Laborers/Laborer3D.cs
+  uploadId: 662688

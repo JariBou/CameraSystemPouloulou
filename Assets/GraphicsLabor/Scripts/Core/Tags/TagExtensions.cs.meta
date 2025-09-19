@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: db706112c230488c91d980bfdf018348
+timeCreated: 1705326997
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Core/Tags/TagExtensions.cs
+  uploadId: 662688

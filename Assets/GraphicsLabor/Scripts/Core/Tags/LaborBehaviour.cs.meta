@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: fe24e890f4c547bea4312e920010d539
+timeCreated: 1705329220
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Core/Tags/LaborBehaviour.cs
+  uploadId: 662688

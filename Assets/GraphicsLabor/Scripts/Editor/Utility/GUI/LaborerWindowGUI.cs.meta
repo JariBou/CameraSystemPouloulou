@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: b833f266ed47406597cf0721183c0fa5
+timeCreated: 1698706972
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Utility/GUI/LaborerWindowGUI.cs
+  uploadId: 662688

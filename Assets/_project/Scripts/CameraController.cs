@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CameraSystem._project.Scripts.Extensions;
 using CameraSystem._project.Scripts.Views;
@@ -71,20 +70,11 @@ namespace CameraSystem._project.Scripts
         
         void ApplyConfiguration()
         {
-            // _currentCameraConfiguration = CameraConfiguration.Lerp(_currentCameraConfiguration, _targetCameraConfiguration, Time.deltaTime * _speed);
             _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
             
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();
             camera.fieldOfView = _currentCameraConfiguration.fov;
-
-            // camera.transform.position = Vector3.Lerp(_currentCameraConfiguration.GetPosition(), _targetCameraConfiguration.GetPosition(), Time.deltaTime * _speed);
-            // camera.transform.rotation = Quaternion.Lerp(_currentCameraConfiguration.GetRotation(), _targetCameraConfiguration.GetRotation(), Time.deltaTime * _speed);
-            // camera.fieldOfView = Mathf.Lerp(_currentCameraConfiguration.fov, _targetCameraConfiguration.fov,  Time.deltaTime * _speed);
-            //
-            // _currentCameraConfiguration.UpdateRotation(camera.transform.rotation);
-            // _currentCameraConfiguration.pivot = Vector3.Lerp(_currentCameraConfiguration.pivot, _targetCameraConfiguration.pivot, Time.deltaTime * _speed);
-            // _currentCameraConfiguration.fov = camera.fieldOfView;
         }
 
         private CameraConfiguration ComputeAverage()
@@ -112,7 +102,12 @@ namespace CameraSystem._project.Scripts
                 weightSum = 1;
             }
 
-            return new CameraConfiguration(ComputeAverageYaw(), pitchSum/weightSum, rollSum/weightSum, pivotSum/weightSum, distanceSum/weightSum, fovSum/weightSum);
+            return new CameraConfiguration(ComputeAverageYaw(),
+                pitchSum / weightSum,
+                rollSum / weightSum,
+                pivotSum / weightSum,
+                distanceSum / weightSum,
+                fovSum / weightSum);
         }
         
         private float ComputeAverageYaw()
@@ -121,8 +116,10 @@ namespace CameraSystem._project.Scripts
             foreach (ViewBase view in _activeViews)
             {
                 CameraConfiguration config = view.GetConfiguration();
-                sum += new Vector2(Mathf.Cos(config.yaw * Mathf.Deg2Rad),
-                    Mathf.Sin(config.yaw * Mathf.Deg2Rad)) * view.weight;
+                sum += new Vector2(
+                    Mathf.Cos(config.yaw * Mathf.Deg2Rad),
+                    Mathf.Sin(config.yaw * Mathf.Deg2Rad)
+                    ) * view.weight;
             }
             return Vector2.SignedAngle(Vector2.right, sum);
         }

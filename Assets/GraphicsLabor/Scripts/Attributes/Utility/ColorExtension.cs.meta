@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 2f7aa7fea47c4ba68cd07fb7135798dc
+timeCreated: 1698671931
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/Utility/ColorExtension.cs
+  uploadId: 662688

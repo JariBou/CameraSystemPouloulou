@@ -1,8 +1,6 @@
-using CameraSystem._project.Scripts;
-using CameraSystem._project.Scripts.Views;
-using System;
 using UnityEngine;
-namespace CameraSystem
+
+namespace CameraSystem._project.Scripts.Views.Dolly
 {
     public class DollyView : ViewBase
     {

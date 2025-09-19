@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 892a5fe49f7148e6bfd04f6ae2194915
+timeCreated: 1699464775
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Windows/WindowBase.cs
+  uploadId: 662688

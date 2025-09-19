@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: ff6ac178acdb4958a7dfb0e92bb87fcf
+timeCreated: 1698598720
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Drawers/Decorators/ShowMessageDrawer.cs
+  uploadId: 662688

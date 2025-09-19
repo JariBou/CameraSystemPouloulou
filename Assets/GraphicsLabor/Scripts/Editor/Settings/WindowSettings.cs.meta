@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: b6c65bf177e54b358d46f05153af4200
+timeCreated: 1704960960
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Settings/WindowSettings.cs
+  uploadId: 662688

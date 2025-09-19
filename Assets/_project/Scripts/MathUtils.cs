@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using CameraSystem._project.Scripts.Extensions;
 using UnityEngine;
 
 namespace CameraSystem._project.Scripts
@@ -22,20 +22,15 @@ namespace CameraSystem._project.Scripts
 
         public static Vector3 VariadicBeziers(float t, params Vector3[] points)
         {
+            t = Mathf.Clamp01(t); // Just in case, seems cleaner
             if (points == null || points.Length == 0) return Vector3.zero;
-            if (points.Length == 1) return points[0];
-            if (points.Length == 2) return Vector3.Lerp(points[0], points[1], t);
-            
-            return Vector3.Lerp(
-                VariadicBeziers(t,
-                    points.GetRange(0,
-                            points.Length - 1)
-                        .ToArray()),
-                VariadicBeziers(t,
-                    points.GetRange(1,
-                            points.Length - 1)
-                        .ToArray()),
-                t);
+            return points.Length switch
+            {
+                1 => points[0],
+                2 => Vector3.Lerp(points[0], points[1], t),
+                _ => Vector3.Lerp(VariadicBeziers(t, points.GetRange(0, points.Length - 1).ToArray()),
+                    VariadicBeziers(t, points.GetRange(1, points.Length - 1).ToArray()), t)
+            };
         }
 
         public static Vector3 GetNearestPointOnSegment(Vector3 a, Vector3 b, Vector3 target)
@@ -51,14 +46,6 @@ namespace CameraSystem._project.Scripts
             // projC = A + n * produit scalaire
             Vector3 projC = a + ABNormal * scalar;
             return projC;
-        }
-    }
-    
-    public static class Vector3ArrayExtensions{
-
-        public static List<Vector3> GetRange(this Vector3[] array, int start, int count)
-        {
-            return new List<Vector3>(array).GetRange(start, count);
         }
     }
 }

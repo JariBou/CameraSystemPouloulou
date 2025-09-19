@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 3f01945b54b646179b539621a547beb0
+timeCreated: 1699043308
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Core/Utility/GLogger.cs
+  uploadId: 662688

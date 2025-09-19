@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 21770fbc0e7f4f529ca8f32a621fcd17
+timeCreated: 1705330538
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Core/Tags/Components/LinkedLaborTagComponent.cs
+  uploadId: 662688

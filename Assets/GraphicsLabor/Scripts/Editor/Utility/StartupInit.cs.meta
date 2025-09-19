@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 290aa28a67994e31a8a1831b5be885c1
+timeCreated: 1699466243
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Editor/Utility/StartupInit.cs
+  uploadId: 662688

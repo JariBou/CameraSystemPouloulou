@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: c6a8e6de14c24c34aa5b453c73e7930b
+timeCreated: 1705400913
+AssetOrigin:
+  serializedVersion: 1
+  productId: 274494
+  packageName: GraphicsLabor
+  packageVersion: 4.0.5
+  assetPath: Assets/GraphicsLabor/Scripts/Attributes/LaborerAttributes/InspectedAttributes/EnableIfAttributeBase.cs
+  uploadId: 662688

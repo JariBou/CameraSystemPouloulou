@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using CameraSystem._project.Scripts.Views;
 using UnityEngine;
 
@@ -8,10 +6,11 @@ namespace CameraSystem._project.Scripts.Volumes
 {
     public class ViewVolumeBlender : MonoBehaviour
     {
+        public static ViewVolumeBlender Instance { get; private set; }
+        
         public List<ViewVolumeBase> _activeViewVolumes = new();
-        private Dictionary<ViewBase, List<ViewVolumeBase>> _volumesPerView = new();
+        private readonly Dictionary<ViewBase, List<ViewVolumeBase>> _volumesPerView = new();
 
-        public static ViewVolumeBlender Instance;
 
         private void Awake()
         {
@@ -21,56 +20,40 @@ namespace CameraSystem._project.Scripts.Volumes
             }
             Instance = this;
         }
+        
         public void Update()
         {
             foreach (ViewBase item in CameraController.Instance.ActiveViews)
             {
                 item.weight = 0;
             }
-/*            foreach (ViewVolumeBase item in _activeViewVolumes)
-            {
-                item.View.weight = 0;
-            }*/
-
             List<ViewVolumeBase> orderedList = new List<ViewVolumeBase>(_activeViewVolumes);
             OrderListVolumes(orderedList);
-            //orderedList.Reverse();
-            //En utilisant cette liste triée, pour chaque volume actif "v" :
+            //En utilisant cette liste triï¿½e, pour chaque volume actif "v" :
 
             foreach (ViewVolumeBase v in orderedList)
             {
-                Debug.Log(v.name + " volume with " + v.Priority + " priority");
-                //Calculer son poids avec « weight = v.GetSelfWeight() » et le borner entre 0 et 1,
+                // Debug.Log(v.name + " volume with " + v.Priority + " priority");
+                //Calculer son poids avec ï¿½ weight = v.GetSelfWeight() ï¿½ et le borner entre 0 et 1,
                 float weight = v.ComputeSelfWeight();
                 weight = Mathf.Clamp(weight, 0.0f, 1.0f);
 
-                //Calculer le poids restant avec: « remainingWeight = 1.0f - weight »,
+                //Calculer le poids restant avec: ï¿½ remainingWeight = 1.0f - weight ï¿½,
                 float remainingWeight = 1.0f - weight;
                 //Multiplier le poids de toutes les vues actives par "remainingWeight",
                 foreach (ViewBase item in CameraController.Instance.ActiveViews)
                 {
                     item.weight *= remainingWeight;
                 }
-                //Ajouter "weight" au poids de la vue associée au volume.
+                //Ajouter "weight" au poids de la vue associï¿½e au volume.
                 v.View.weight += weight;
-                Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
+                // Debug.Log(v.View.name + " view with " + v.View.weight + " weight");
             }
         }
 
-        private void OrderListVolumes(List<ViewVolumeBase> outList)
+        private static void OrderListVolumes(List<ViewVolumeBase> outList)
         {
-
-            outList.Sort((a, b) =>
-            {
-                
-                if (a.Priority == b.Priority)
-                {
-                    return a.Uid.CompareTo(b.Uid);
-                }
-
-                return a.Priority.CompareTo(b.Priority);
-
-            });
+            outList.Sort((a, b) => a.Priority == b.Priority ? a.Uid.CompareTo(b.Uid) : a.Priority.CompareTo(b.Priority));
         }
 
         public void AddVolume(ViewVolumeBase volume)
@@ -82,10 +65,11 @@ namespace CameraSystem._project.Scripts.Volumes
                 volumes.Add(volume);
             } else
             {
-                _volumesPerView.Add(volume.View, new List<ViewVolumeBase>() {volume});
+                _volumesPerView.Add(volume.View, new List<ViewVolumeBase> {volume});
                 volume.View.SetActive(true);
             }
         }
+        
         public void RemoveVolume(ViewVolumeBase volume)
         {
             _activeViewVolumes.Remove(volume);
@@ -105,7 +89,7 @@ namespace CameraSystem._project.Scripts.Volumes
             GUILayout.Label("Active View Volumes:");
             foreach (ViewVolumeBase volume in _activeViewVolumes)
             {
-                GUILayout.Label($"{volume.GetType().Name} - {volume.ComputeSelfWeight()}");
+                GUILayout.Label($"{volume.GetType().Name} - Vol Prio: {volume.Priority} - View Weight:{volume.View.weight}");
             }
         }
     }
