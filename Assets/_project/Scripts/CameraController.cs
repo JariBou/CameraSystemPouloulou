@@ -131,7 +131,7 @@ namespace CameraSystem._project.Scripts
         void ApplyConfiguration()
         {
             _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
-            
+
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();
             camera.fieldOfView = _currentCameraConfiguration.fov;

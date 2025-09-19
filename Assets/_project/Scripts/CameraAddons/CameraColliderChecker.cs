@@ -6,7 +6,7 @@ public class CameraColliderChecker : MonoBehaviour
     public Transform CamCollider;
     public float speed = 100.0f;
     public float treshHoldDistance = 1.0f;
-
+    public Vector3 test; 
     private CameraConfiguration camConfig = new CameraConfiguration();
 
     private void Awake()
@@ -27,7 +27,7 @@ public class CameraColliderChecker : MonoBehaviour
 
         if(Physics.SphereCast(this.transform.position, 3.0f, direction, out hit, 100))
         {
-            camConfig.pivot = hit.point;
+            test = hit.point;
         }
     }
 }   

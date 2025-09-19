@@ -15,8 +15,12 @@ namespace CameraSystem._project.Scripts
         private float _angularSpeed;
         private Quaternion _startingRotation;
 
+        [SerializeField] AudioSource BGM;
+
         private void Awake()
         {
+            if(BGM != null )
+                BGM.Play();
             _startingRotation = transform.rotation;
         }
 
