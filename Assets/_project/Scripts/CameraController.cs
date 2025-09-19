@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using CameraSystem._project.Scripts.Extensions;
 using CameraSystem._project.Scripts.Views;
@@ -134,14 +135,6 @@ namespace CameraSystem._project.Scripts
             camera.transform.position = _currentCameraConfiguration.GetPosition();
             camera.transform.rotation = _currentCameraConfiguration.GetRotation();
             camera.fieldOfView = _currentCameraConfiguration.fov;
-
-            // camera.transform.position = Vector3.Lerp(_currentCameraConfiguration.GetPosition(), _targetCameraConfiguration.GetPosition(), Time.deltaTime * _speed);
-            // camera.transform.rotation = Quaternion.Lerp(_currentCameraConfiguration.GetRotation(), _targetCameraConfiguration.GetRotation(), Time.deltaTime * _speed);
-            // camera.fieldOfView = Mathf.Lerp(_currentCameraConfiguration.fov, _targetCameraConfiguration.fov,  Time.deltaTime * _speed);
-            //
-            // _currentCameraConfiguration.UpdateRotation(camera.transform.rotation);
-            // _currentCameraConfiguration.pivot = Vector3.Lerp(_currentCameraConfiguration.pivot, _targetCameraConfiguration.pivot, Time.deltaTime * _speed);
-            // _currentCameraConfiguration.fov = camera.fieldOfView;
         }
 
         private CameraConfiguration ComputeAverage()
