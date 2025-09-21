@@ -9,6 +9,7 @@ namespace CameraSystem._project.Scripts.Views.Dolly
         public float distance;
         public GameObject target;
         public Rail rail;
+        [Min(0)]
         public float distanceOnRail;
         public float speed;
         public bool IsAuto;

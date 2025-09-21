@@ -17,11 +17,19 @@ namespace CameraSystem._project.Scripts
 
         [SerializeField] AudioSource BGM;
 
+        private Vector3 _spawnPoint;
+
+        [SerializeField] GameObject _tooltips;
         private void Awake()
         {
             if(BGM != null )
                 BGM.Play();
             _startingRotation = transform.rotation;
+        }
+
+        private void Start()
+        {
+            _spawnPoint = transform.position;
         }
 
         public void Update()
@@ -44,9 +52,25 @@ namespace CameraSystem._project.Scripts
             {
                 transform.position += transform.up * (_speed * Time.deltaTime);
             }
-            
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                transform.position = _spawnPoint;
+            }
+
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                if(_tooltips.activeInHierarchy)
+                {
+                    _tooltips.SetActive(false);
+                } else
+                {
+                    _tooltips.SetActive(true);
+                }
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 transform.rotation = _startingRotation;
             }

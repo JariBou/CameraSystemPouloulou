@@ -7,11 +7,12 @@ namespace CameraSystem._project.Scripts.Views.Dolly
     public class Rail : MonoBehaviour
     {
         public bool isLoop;
-        public float length;
+
+        private float length;
         private List<Transform> children = new List<Transform>();
 
-        public float TempDistance = 0.0f;
-        public Vector3 TempSavedPos = Vector3.zero;
+        private float TempDistance = 0.0f;
+        private  Vector3 TempSavedPos = Vector3.zero;
         private void OnValidate()
         {
             GetAllChildren();
@@ -24,7 +25,6 @@ namespace CameraSystem._project.Scripts.Views.Dolly
 
         private void Update()
         {
-           TempSavedPos = GetPosition(TempDistance);
         }
         private void GetAllChildren()
         {

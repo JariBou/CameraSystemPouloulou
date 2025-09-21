@@ -30,6 +30,7 @@ namespace CameraSystem._project.Scripts
         [FormerlySerializedAs("Camera")] public Camera camera;
 
         private CameraConfiguration _currentCameraConfiguration;
+        public CameraConfiguration CurrentCameraConfiguration { get => _currentCameraConfiguration; set => _currentCameraConfiguration = value; }
         private CameraConfiguration _targetCameraConfiguration;
         private CameraConfiguration _finalCameraConfiguration;
         [SerializeField]
@@ -128,6 +129,10 @@ namespace CameraSystem._project.Scripts
             _isCutRequested = true;
         }
 
+        public Transform CamCollider;
+        public float speedCatchupCollider = 100.0f;
+        public float distanceCamCatchupTreshold = 10.0f;
+
         void ApplyConfiguration()
         {
             _currentCameraConfiguration.LerpTo(_targetCameraConfiguration, Time.deltaTime * _speed);
@@ -140,6 +145,8 @@ namespace CameraSystem._project.Scripts
             {
                 _finalCameraConfiguration = _currentCameraConfiguration;
             }
+
+            //final set values
 
             camera.transform.position = _finalCameraConfiguration.GetPosition();
             camera.transform.rotation = _finalCameraConfiguration.GetRotation();
